@@ -1,7 +1,6 @@
 "use client";
 
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { useEffect, useState } from "react";
 
 interface CodeBlockProps {
   code: string;
@@ -9,11 +8,33 @@ interface CodeBlockProps {
 }
 
 export default function CodeBlock({ code, language }: CodeBlockProps) {
+  const [SyntaxHighlighter, setSyntaxHighlighter] = useState<any>(null);
+  const [style, setStyle] = useState<any>(null);
+
+  useEffect(() => {
+    import("react-syntax-highlighter").then((mod) => {
+      setSyntaxHighlighter(() => mod.Prism);
+    });
+    import("react-syntax-highlighter/dist/esm/styles/prism").then((mod) => {
+      setStyle(mod.oneDark);
+    });
+  }, []);
+
+  if (!SyntaxHighlighter || !style) {
+    return (
+      <div className="rounded-lg overflow-hidden bg-[#1a1a1a] p-6">
+        <pre className="text-sm text-gray-300 font-mono whitespace-pre-wrap">
+          <code>{code}</code>
+        </pre>
+      </div>
+    );
+  }
+
   return (
     <div className="rounded-lg overflow-hidden">
       <SyntaxHighlighter
         language={language}
-        style={oneDark}
+        style={style}
         customStyle={{
           margin: 0,
           padding: "1.5rem",
