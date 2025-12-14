@@ -4,6 +4,13 @@ export default function Integrations() {
     logo: `Logo ${i + 1}`,
   }));
 
+  const githubActivity = [
+    { label: "[python-SDK] improvs/async", pr: "#1337", date: "Apr 18, 2025", author: "rafaelsideguide" },
+    { label: "feat(extract): cost limit", pr: "#1473", date: "Apr 17, 2025", author: "rafaelsideguide" },
+    { label: "feat(scrape): get job result from GCS, avoid Redis", pr: "#1461", date: "Apr 15, 2025", author: "mogery" },
+    { label: "Extract v2/rerank improvs", pr: "#1437", date: "Apr 11, 2025", author: "rafaelsideguide" },
+  ];
+
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#0a0a0a]">
       <div className="max-w-7xl mx-auto text-center space-y-12">
@@ -29,32 +36,58 @@ export default function Integrations() {
         </div>
 
         {/* GitHub Section */}
-        <div className="bg-[#1a1a1a] border border-gray-800 rounded-xl p-8">
-          <div className="flex items-center justify-center gap-4 mb-4">
-            <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">
-              F
+        <div className="bg-[#1a1a1a] border border-gray-800 rounded-xl p-8 text-left">
+          <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">
+                F
+              </div>
+              <div>
+                <div className="font-bold text-lg">mendableai/firecrawl</div>
+                <div className="text-sm text-gray-400">Public</div>
+              </div>
             </div>
-            <div className="text-left">
-              <div className="font-bold text-lg">mendableai/firecrawl</div>
-              <div className="text-sm text-gray-400">Public</div>
+            <div className="flex items-center gap-4 text-gray-400">
+              <span>⭐ 69.7K</span>
             </div>
           </div>
-          <div className="flex items-center justify-center gap-4 text-gray-400">
-            <span>⭐ 69.7K</span>
-            <span>•</span>
-            <span>Open Source</span>
+
+          {/* GitHub Activity */}
+          <div className="space-y-3 mb-6">
+            {githubActivity.map((activity, index) => (
+              <div key={index} className="flex items-center gap-3 text-sm">
+                <div className="flex-1 flex items-center gap-2">
+                  <span className="text-blue-400">{activity.label}</span>
+                  <span className="text-gray-600">{activity.pr}</span>
+                </div>
+                <span className="text-gray-500">·</span>
+                <span className="text-gray-500">{activity.date}</span>
+                <span className="text-gray-500">·</span>
+                <span className="text-gray-400">{activity.author}</span>
+              </div>
+            ))}
           </div>
-          <div className="mt-6">
-            <a
-              href="#"
-              className="text-blue-400 hover:text-blue-300 font-medium"
-            >
-              Check out our repo →
-            </a>
+
+          <div className="flex items-center justify-between">
+            <div className="text-sm text-gray-400">
+              <span className="text-blue-400">+90</span> more
+            </div>
+            <div className="text-right">
+              <div className="text-sm font-semibold mb-2">Open Source</div>
+              <div className="text-lg font-bold mb-4">Code you can trust</div>
+              <p className="text-sm text-gray-400 mb-4">
+                Developed transparently and collaboratively. Join our community of contributors.
+              </p>
+              <a
+                href="#"
+                className="text-blue-400 hover:text-blue-300 font-medium text-sm"
+              >
+                Check out our repo →
+              </a>
+            </div>
           </div>
         </div>
       </div>
     </section>
   );
 }
-
