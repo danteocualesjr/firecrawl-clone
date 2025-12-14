@@ -31,18 +31,18 @@ export default function Header() {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6">
             {navItems.map((item) => (
               <a
                 key={item}
                 href="#"
-                className="text-gray-300 hover:text-white transition-colors text-sm"
+                className="text-gray-300 hover:text-white transition-colors text-sm font-medium"
               >
                 {item}
               </a>
             ))}
             <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
-              <span className="hidden sm:inline">69.7K</span> Sign up
+              <span className="hidden lg:inline mr-1">69.7K</span> Sign up
             </button>
           </div>
 

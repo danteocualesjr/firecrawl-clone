@@ -30,15 +30,15 @@ export default function Hero() {
 
       <div className="relative z-10 max-w-6xl mx-auto w-full text-center space-y-8">
         {/* Main Heading */}
-        <div className="space-y-4">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight">
+        <div className="space-y-6">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight">
             Turn websites into
             <br />
-            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-purple-500 bg-clip-text text-transparent">
               LLM-ready data
             </span>
           </h1>
-          <p className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
             Power your AI apps with clean web data from any website.
             <span className="block mt-2">It&apos;s also open source.</span>
           </p>

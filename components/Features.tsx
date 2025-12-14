@@ -93,10 +93,10 @@ To install Firecrawl, run:`;
     <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#0a0a0a]">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16 space-y-4">
-          <h2 className="text-4xl md:text-5xl font-bold">
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
             Start scraping today
           </h2>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
             Enhance your apps with industry leading web scraping and crawling capabilities.
           </p>
         </div>
