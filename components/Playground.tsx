@@ -1,149 +1,88 @@
 "use client";
 
 import { useState } from "react";
-import CodeBlock from "./CodeBlock";
+import { ArrowRight, X, Globe } from "lucide-react";
 
-type TabType = "scrape" | "search" | "crawl";
-type FormatType = "json" | "markdown";
+type ActionType = "scrape" | "search" | "new" | "map" | "crawl";
 
 export default function Playground() {
-  const [activeTab, setActiveTab] = useState<TabType>("scrape");
-  const [format, setFormat] = useState<FormatType>("json");
-  const [url, setUrl] = useState("firecrawl.dev");
-  const [isScraping, setIsScraping] = useState(false);
-
-  const exampleJson = `[
-  {
-    "url": "https://firecrawl.dev",
-    "markdown": "# Firecrawl\\n\\nFirecrawl is a powerful web scraping...",
-    "json": { "title": "Firecrawl", "docs": "..." },
-    "screenshot": "https://firecrawl.dev/screenshot.png"
-  }
-]`;
-
-  const exampleMarkdown = `# Firecrawl
-
-Firecrawl is a powerful web scraping
-library that makes it easy to extract
-data from websites.
-
-## Installation
-
-To install Firecrawl, run:`;
-
-  const handleScrape = () => {
-    setIsScraping(true);
-    setTimeout(() => setIsScraping(false), 2000);
-  };
+  const [activeAction, setActiveAction] = useState<ActionType>("scrape");
+  const [url, setUrl] = useState("");
 
   return (
     <div className="w-full max-w-4xl mx-auto">
-      {/* Status and Format Badges */}
-      <div className="flex items-center gap-3 mb-4 justify-center flex-wrap">
-        <span className="px-3 py-1 bg-green-500/20 text-green-400 rounded-md text-xs font-mono border border-green-500/30">
-          [ 200 OK ]
-        </span>
-        <button
-          onClick={() => setFormat("json")}
-          className={`px-3 py-1 rounded-md text-xs font-mono border transition-colors ${
-            format === "json"
-              ? "bg-blue-500/20 text-blue-400 border-blue-500/50"
-              : "bg-gray-800/50 text-gray-400 border-gray-700 hover:border-gray-600"
-          }`}
-        >
-          [ .JSON ]
-        </button>
-        <button
-          onClick={() => setFormat("markdown")}
-          className={`px-3 py-1 rounded-md text-xs font-mono border transition-colors ${
-            format === "markdown"
-              ? "bg-blue-500/20 text-blue-400 border-blue-500/50"
-              : "bg-gray-800/50 text-gray-400 border-gray-700 hover:border-gray-600"
-          }`}
-        >
-          [ .MD ]
-        </button>
-        <button
-          onClick={() => setActiveTab("scrape")}
-          className={`px-3 py-1 rounded-md text-xs font-mono border transition-colors ${
-            activeTab === "scrape"
-              ? "bg-blue-500/20 text-blue-400 border-blue-500/50"
-              : "bg-gray-800/50 text-gray-400 border-gray-700 hover:border-gray-600"
-          }`}
-        >
-          [ SCRAPE ]
+      {/* URL Input and Submit Button */}
+      <div className="flex gap-3 mb-4">
+        <div className="flex-1 relative">
+          <div className="absolute left-4 top-1/2 -translate-y-1/2">
+            <Globe size={16} className="text-gray-400 opacity-50" />
+          </div>
+          <input
+            type="text"
+            value={url}
+            onChange={(e) => setUrl(e.target.value)}
+            placeholder="https://example.com"
+            className="w-full bg-white border border-gray-300 rounded-lg pl-12 pr-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+          />
+        </div>
+        <button className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg font-medium transition-colors flex items-center gap-2 whitespace-nowrap">
+          <ArrowRight size={20} />
         </button>
       </div>
 
-      {/* Tabs */}
-      <div className="flex gap-2 border-b border-gray-800 mb-6">
+      {/* Action Buttons */}
+      <div className="flex gap-2 items-center">
         <button
-          onClick={() => setActiveTab("scrape")}
-          className={`px-4 py-3 text-sm font-medium transition-colors relative ${
-            activeTab === "scrape"
-              ? "text-white"
-              : "text-gray-400 hover:text-white"
+          onClick={() => setActiveAction("scrape")}
+          className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
+            activeAction === "scrape"
+              ? "bg-gray-200 text-gray-900"
+              : "bg-transparent text-gray-600 hover:text-gray-900"
           }`}
         >
           Scrape
-          {activeTab === "scrape" && (
-            <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-white"></span>
-          )}
         </button>
         <button
-          onClick={() => setActiveTab("search")}
-          className={`px-4 py-3 text-sm font-medium transition-colors relative ${
-            activeTab === "search"
-              ? "text-white"
-              : "text-gray-400 hover:text-white"
+          onClick={() => setActiveAction("search")}
+          className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
+            activeAction === "search"
+              ? "bg-gray-200 text-gray-900"
+              : "bg-transparent text-gray-600 hover:text-gray-900"
           }`}
         >
           Search
-          <span className="ml-2 text-xs bg-green-500 text-black px-1.5 py-0.5 rounded">New</span>
-          {activeTab === "search" && (
-            <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-white"></span>
-          )}
         </button>
         <button
-          onClick={() => setActiveTab("crawl")}
-          className={`px-4 py-3 text-sm font-medium transition-colors relative ${
-            activeTab === "crawl"
-              ? "text-white"
-              : "text-gray-400 hover:text-white"
+          onClick={() => setActiveAction("new")}
+          className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
+            activeAction === "new"
+              ? "bg-gray-200 text-gray-900"
+              : "bg-transparent text-gray-600 hover:text-gray-900"
           }`}
         >
-          Map Crawl
-          {activeTab === "crawl" && (
-            <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-white"></span>
-          )}
+          New
         </button>
-      </div>
-
-      {/* URL Input and Scrape Button */}
-      <div className="flex gap-3 mb-6">
-        <input
-          type="text"
-          value={url}
-          onChange={(e) => setUrl(e.target.value)}
-          placeholder="Enter URL"
-          className="flex-1 bg-[#0a0a0a] border border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-        />
         <button
-          onClick={handleScrape}
-          disabled={isScraping}
-          className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
+          onClick={() => setActiveAction("map")}
+          className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
+            activeAction === "map"
+              ? "bg-gray-200 text-gray-900"
+              : "bg-transparent text-gray-600 hover:text-gray-900"
+          }`}
         >
-          {isScraping ? "Scraping..." : "Scrape"}
+          Map
         </button>
-      </div>
-
-      {/* Output Display */}
-      <div className="bg-[#0a0a0a] border border-gray-800 rounded-lg overflow-hidden">
-        {format === "json" ? (
-          <CodeBlock code={exampleJson} language="json" />
-        ) : (
-          <CodeBlock code={exampleMarkdown} language="markdown" />
-        )}
+        <button
+          onClick={() => setActiveAction("crawl")}
+          className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors flex items-center gap-1 ${
+            activeAction === "crawl"
+              ? "bg-gray-200 text-gray-900"
+              : "bg-transparent text-gray-600 hover:text-gray-900"
+          }`}
+        >
+          Crawl
+          <X size={14} className="text-red-500" />
+        </button>
       </div>
     </div>
   );
