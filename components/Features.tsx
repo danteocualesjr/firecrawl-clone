@@ -73,6 +73,12 @@ await app.crawlUrl('firecrawl.dev');`,
   -d '{"url": "firecrawl.dev"}'`,
   };
 
+  const featureDescriptions = {
+    scrape: "Get llm-ready data from websites. Markdown, JSON, screenshot, etc.",
+    search: "Search the web and get full content from results.",
+    crawl: "Crawl all the pages on a website and get data for each page.",
+  };
+
   const getCode = () => {
     if (activeLanguage === "python") return pythonCode[activeFeature];
     if (activeLanguage === "node") return nodeCode[activeFeature];
@@ -90,8 +96,22 @@ data from websites.
 To install Firecrawl, run:`;
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#0a0a0a]">
+    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-[#0a0a0a]">
       <div className="max-w-7xl mx-auto">
+        {/* Section Header */}
+        <div className="text-center mb-4">
+          <div className="inline-flex items-center gap-2 text-sm text-gray-400 mb-6">
+            <span>·</span>
+            <span>Main Features</span>
+            <span>·</span>
+          </div>
+          <div className="inline-flex items-center gap-2 text-sm text-gray-400 mb-8">
+            <span>//</span>
+            <span>Developer First</span>
+            <span>//</span>
+          </div>
+        </div>
+
         <div className="text-center mb-16 space-y-4">
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
             Start scraping today
@@ -102,7 +122,7 @@ To install Firecrawl, run:`;
         </div>
 
         {/* Feature Tabs */}
-        <div className="flex justify-center gap-4 mb-8">
+        <div className="flex justify-center gap-4 mb-12">
           <button
             onClick={() => setActiveFeature("scrape")}
             className={`px-6 py-3 rounded-lg font-medium transition-colors ${
@@ -135,13 +155,18 @@ To install Firecrawl, run:`;
           </button>
         </div>
 
+        {/* Feature Description */}
+        <p className="text-center text-gray-400 mb-8">
+          {featureDescriptions[activeFeature]}
+        </p>
+
         {/* Code Tabs and Display */}
-        <div className="bg-[#1a1a1a] border border-gray-800 rounded-xl p-6">
+        <div className="bg-[#1a1a1a] border border-gray-800 rounded-xl p-8">
           {/* Language Tabs */}
-          <div className="flex gap-2 mb-4">
+          <div className="flex gap-2 mb-6">
             <button
               onClick={() => setActiveLanguage("python")}
-              className={`px-4 py-2 text-sm rounded-lg transition-colors ${
+              className={`px-4 py-2 text-sm rounded-lg transition-colors font-medium ${
                 activeLanguage === "python"
                   ? "bg-blue-600 text-white"
                   : "bg-[#0a0a0a] text-gray-400 hover:text-white border border-gray-700"
@@ -151,7 +176,7 @@ To install Firecrawl, run:`;
             </button>
             <button
               onClick={() => setActiveLanguage("node")}
-              className={`px-4 py-2 text-sm rounded-lg transition-colors ${
+              className={`px-4 py-2 text-sm rounded-lg transition-colors font-medium ${
                 activeLanguage === "node"
                   ? "bg-blue-600 text-white"
                   : "bg-[#0a0a0a] text-gray-400 hover:text-white border border-gray-700"
@@ -161,7 +186,7 @@ To install Firecrawl, run:`;
             </button>
             <button
               onClick={() => setActiveLanguage("curl")}
-              className={`px-4 py-2 text-sm rounded-lg transition-colors ${
+              className={`px-4 py-2 text-sm rounded-lg transition-colors font-medium ${
                 activeLanguage === "curl"
                   ? "bg-blue-600 text-white"
                   : "bg-[#0a0a0a] text-gray-400 hover:text-white border border-gray-700"
@@ -186,4 +211,3 @@ To install Firecrawl, run:`;
     </section>
   );
 }
-
