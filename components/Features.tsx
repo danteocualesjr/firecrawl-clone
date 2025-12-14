@@ -173,9 +173,11 @@ To install Firecrawl, run:`;
 
           {/* Code Display */}
           <div className="grid md:grid-cols-2 gap-6">
-            <CodeBlock code={getCode()} language={activeLanguage === "curl" ? "bash" : activeLanguage} />
+            <div>
+              <CodeBlock code={getCode()} language={activeLanguage === "curl" ? "bash" : activeLanguage} />
+            </div>
             <div className="bg-[#0a0a0a] rounded-lg p-6 border border-gray-800">
-              <div className="text-sm text-gray-400 mb-2">[ .MD ]</div>
+              <div className="text-sm text-gray-400 mb-4 font-mono">[ .MD ]</div>
               <CodeBlock code={markdownPreview} language="markdown" />
             </div>
           </div>

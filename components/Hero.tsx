@@ -4,27 +4,28 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 py-20 overflow-hidden">
       {/* ASCII Art Background Pattern */}
-      <div className="absolute inset-0 opacity-5 pointer-events-none">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `repeating-linear-gradient(
-            0deg,
-            transparent,
-            transparent 2px,
-            rgba(255,255,255,0.03) 2px,
-            rgba(255,255,255,0.03) 4px
-          )`,
-          fontFamily: 'monospace',
-          fontSize: '8px',
-          lineHeight: '8px',
-          color: 'white',
-          whiteSpace: 'pre',
-        }}>
-          {Array.from({ length: 1000 }).map((_, i) => (
-            <span key={i} style={{ opacity: Math.random() * 0.5 }}>
-              {Math.random() > 0.5 ? '.' : ':'}
-            </span>
-          ))}
-        </div>
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none overflow-hidden">
+        <div 
+          className="absolute inset-0 font-mono text-xs leading-none text-white"
+          style={{
+            background: `
+              repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 8px,
+                rgba(255,255,255,0.02) 8px,
+                rgba(255,255,255,0.02) 16px
+              ),
+              repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 8px,
+                rgba(255,255,255,0.02) 8px,
+                rgba(255,255,255,0.02) 16px
+              )
+            `,
+          }}
+        />
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto w-full text-center space-y-8">

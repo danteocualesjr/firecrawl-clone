@@ -8,6 +8,7 @@ import Integrations from "@/components/Integrations";
 import CorePrinciples from "@/components/CorePrinciples";
 import UseCases from "@/components/UseCases";
 import FAQ from "@/components/FAQ";
+import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -23,6 +24,7 @@ export default function Home() {
       <CorePrinciples />
       <UseCases />
       <FAQ />
+      <CTA />
       <Footer />
     </main>
   );
