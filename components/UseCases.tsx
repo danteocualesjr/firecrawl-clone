@@ -40,6 +40,20 @@ export default function UseCases() {
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#0a0a0a]">
       <div className="max-w-7xl mx-auto">
+        {/* Section Header */}
+        <div className="text-center mb-4">
+          <div className="inline-flex items-center gap-2 text-sm text-gray-400 mb-6">
+            <span>·</span>
+            <span>Use Cases</span>
+            <span>·</span>
+          </div>
+          <div className="inline-flex items-center gap-2 text-sm text-gray-400 mb-8">
+            <span>//</span>
+            <span>Use cases</span>
+            <span>//</span>
+          </div>
+        </div>
+
         <div className="text-center mb-16 space-y-4">
           <h2 className="text-4xl md:text-5xl font-bold">
             Transform web data into AI-powered solutions
@@ -47,7 +61,7 @@ export default function UseCases() {
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">
             Discover how Firecrawl customers are getting the most out of our API.
           </p>
-          <a href="#" className="inline-block text-blue-400 hover:text-blue-300 font-medium">
+          <a href="#" className="inline-block text-blue-400 hover:text-blue-300 font-medium mt-4">
             View all use cases →
           </a>
         </div>
@@ -81,4 +95,3 @@ export default function UseCases() {
     </section>
   );
 }
-
