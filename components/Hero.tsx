@@ -26,7 +26,7 @@ export default function Hero() {
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] text-gray-900">
             Turn websites into
             <br />
-            <span className="text-orange-500">
+            <span className="text-orange-500 flex flex-col justify-start items-center opacity-95 font-semibold">
               LLM-ready data
             </span>
           </h1>
